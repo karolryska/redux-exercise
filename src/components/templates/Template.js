@@ -12,6 +12,9 @@ const Template = ({ children }) => {
                         <li>
                             <Link to="/users">users</Link>
                         </li>
+                        <li>
+                            <Link to="/counter">counter</Link>
+                        </li>
                     </ul>
                 </nav>
             </header>
