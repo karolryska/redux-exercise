@@ -1,25 +1,22 @@
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from 'store/redux';
-import { reducer as counterReducer } from 'store/counter';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from 'rootReducer';
 import Home from './Home';
 import Users from './Users';
 import Counter from './Counter';
 
 const App = () => {
-    const store = createStore(reducer);
-    const counterStore = createStore(counterReducer);
+    const store = createStore(rootReducer, applyMiddleware(thunk));
 
     return (
         <Provider store={store}>
-            <Provider store={counterStore}>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/users" element={<Users />} />
-                    <Route path="/counter" element={<Counter />} />
-                </Routes>
-            </Provider>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/users" element={<Users />} />
+                <Route path="/counter" element={<Counter />} />
+            </Routes>
         </Provider>
     );
 };
