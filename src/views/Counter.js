@@ -15,7 +15,7 @@ const Home = ({ counter, inc, dec }) => {
 
 const mapStateToProps = (state) => {
     return {
-        counter: state.counter,
+        counter: state.counter.counter,
     };
 };
 const mapDispatchToProps = (dispatch) => {
